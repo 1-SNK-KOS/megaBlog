@@ -43,6 +43,7 @@ export class Service {
 
     // DOUBT : is any plus point to keep slug outside of object maybe it is easy to keep it seprate     
     // NOTE : we want only user to update his post so we are not giving user_id in this. If other can edit then we have to give user_id 
+    //TODO : Try it by giving user__id and see the change and try to create a functionality that other can request for a change and it will be update when owner allow for it 
     async updatePost(slug , {title,content,featuredImg,status}){
         try {
             const updatePostResp = await this.database.updateDocument(
@@ -203,6 +204,6 @@ export class Service {
 
 };
 
-const service = new Service();
+const appWriteService = new Service();
 
-export default service;
+export default appWriteService;
