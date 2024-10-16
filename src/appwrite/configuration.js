@@ -104,6 +104,7 @@ export class Service {
 
             if(getPostResp){
                 console.log("Post fetched :: ",getPostResp);
+                return getPostResp;
             }else{
                 console.log("Retry getPost :: ",getPostResp);
             }

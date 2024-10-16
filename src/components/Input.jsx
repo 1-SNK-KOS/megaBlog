@@ -8,7 +8,7 @@ className ='',
 ...props
 
 },ref){
-
+  console.log("Input Component")
   const id = useId();
 
 

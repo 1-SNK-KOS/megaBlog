@@ -1,11 +1,14 @@
 import { useSelector } from "react-redux"
 import { useState , useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import PropTypes from 'prop-types'
 
-function Protected({children, authentication = true}) {
+function Protected({authentication,children}) {
+    console.log("Protected :: ")
 
     const [loader,setLoader] = useState(true);
-    const authStatus = useSelector(state => state.auth.status)
+    const authStatus = useSelector(state => state.status)
+    console.log(authStatus)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -24,10 +27,15 @@ function Protected({children, authentication = true}) {
         setLoader(false)
     },[authStatus,navigate,authentication])
 
-
+      console.log(children)
     return loader?<h1>Loading...</h1>: <>{children}</>
     
 
+}
+
+Protected.propTypes = {
+    // children : PropTypes.element, // REVIEW : check types of Proptyauthentication : PropTypes.bool
+ 
 }
 
 export default Protected

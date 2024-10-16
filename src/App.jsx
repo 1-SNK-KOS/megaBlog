@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import authService from './appwrite/auth';
 import { login, logout } from './store/authSlice';
+import { Outlet } from 'react-router-dom';
 
 function App() {
   //  console.log(process.env.REACT_APP_APPWRITE_URL);// in different framework and lib to import env method are different
@@ -17,14 +18,14 @@ function App() {
 
 
   useEffect(() => {
-     authService.getCurrentUserStatus()
+      authService.getCurrentUserStatus()
                 .then((userData) =>{
                   if(userData){
                     console.log(userData);
                     dispatch(login({userData}))  // TODO : try sending without crly bracket of login fn parameter
                   }
                   else{
-                       dispatch(logout())
+                        dispatch(logout())
                   }
                 })
                 .catch((error) => {
@@ -46,9 +47,9 @@ function App() {
 
   return !loading? <div>
     <Header/>
-     <main>
-      {/* <Outlet/> TODO : make reat routeer */}
-     </main>
+      <main>
+      <Outlet/>  { /*//TODO : make reat routeer */}
+      </main>
     <Footer/>  
   </div> : <div>Please LoGIN!!!</div>
 }

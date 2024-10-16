@@ -4,12 +4,14 @@ import appWriteService from '../../appwrite/configuration'
 import { useSelector } from "react-redux"
 import {Button , Input , Select , RTE} from '../index'
 import { useNavigate } from "react-router-dom"
+import PropTypes from 'prop-types'
 
 
 function PostForm({post}) {
 
     const navigate = useNavigate();
-    const userData = useSelector(state => state.auth.userData);
+    const userData = useSelector(state => state.userData.userData);
+    console.log("Post Form :: userData",userData.$id);
 
     const {register , handleSubmit , setValue , getValues , watch , control} = useForm({
         defaultValues : {
@@ -44,9 +46,12 @@ function PostForm({post}) {
                 }
         }
         else{
-                const file = data.image[0]? await appWriteService.uploadFile(data.image[0]) : null;
-
+                const file =  await appWriteService.uploadFile(data.image[0]);
+                    
                 if(file){
+                    console.log("data ::" ,data,userData.id);
+                    data.featuredImg = file.$id;
+                    
                         const dBPost = await appWriteService.createPost({...data,user_id:userData.$id})
 
                         if(dBPost)navigate(`/post/${dBPost.$id}`)
@@ -136,6 +141,10 @@ return (
     </div>
 </form>
 )
+}
+
+PostForm.propTypes = {
+    post : PropTypes.object
 }
 
 export default PostForm

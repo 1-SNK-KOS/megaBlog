@@ -5,12 +5,14 @@ import {Container,PostCard} from '../components'
 function AllPosts() {
     const [posts,setPosts] = useState([]);
 
-    useEffect(() => {},[]) //Doubt: Why are we using it without anything inside it
-
-    appWriteService.getPosts([])
+    useEffect(() => {
+        appWriteService.getPosts([])
                     .then((posts) => {
                         if(posts)setPosts(posts.documents);
                         })
+    },[]) //Doubt: Why are we using it without anything inside it
+
+    
 
 
 return (

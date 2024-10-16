@@ -7,6 +7,7 @@ import { Link , useNavigate } from "react-router-dom"
 import {Button , Input , Logo } from './index'
 
 function Signup() {
+    console.log("Signup Component")
     
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -17,12 +18,13 @@ function Signup() {
         setError('')
         try {
             const session = await authService.createAccount(data);
-
+            
                 if(session) {
                     const userData = await authService.getCurrentUserStatus();
-
+                        console.log(userData);
                     if(userData){
                         dispatch(login(userData))
+                        console.log('navigate');
                         navigate('/')
                     }
                 }
@@ -81,8 +83,9 @@ function Signup() {
                     <Button
                         type = 'Submit'
                         className="w-full"
+                        // Btntext = 'Create Account'
                     >
-                    Create Account ✨😊
+                    Create Account
                     </Button>
                 </div>
             </form>

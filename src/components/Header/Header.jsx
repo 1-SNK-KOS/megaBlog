@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';  // TODO : Change it to Navlink so curr
 
 function Header() {
   
-  const authStatus = useSelector((state) => state.auth.status)
+  const authStatus = useSelector((state) => state.status)
 
   const navigate = useNavigate();
 

@@ -9,8 +9,8 @@ import Select from './Select';
 import Login from "./Login";
 import PostCard from "./PostCard";
 import Signup from "./Signup";
-import Protected from "./AuthLayout";
+import AuthLayout from "./AuthLayout";
 import RTE from "./RTE";
 import PostForm from "./Post-Form/PostForm";
 
-export {Header,Footer,Logo,Container,LogoutBtn,Button,PostCard,Login,Signup,Select,Input,Protected,RTE,PostForm} 
+export {Header,Footer,Logo,Container,LogoutBtn,Button,PostCard,Login,Signup,Select,Input,AuthLayout,RTE,PostForm} 
